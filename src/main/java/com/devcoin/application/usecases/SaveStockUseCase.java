@@ -3,8 +3,9 @@ package com.devcoin.application.usecases;
 // src/main/java/com/devcoin/service/TestService.java
 
 import com.devcoin.domain.client.BrapiClient;
+import com.devcoin.domain.repository.CotacaoRepository;
 import com.devcoin.infraestructure.persistence.Cotacao;
-import com.devcoin.infraestructure.persistence.CotacaoRepository;
+import com.devcoin.infraestructure.persistence.SpringCotacaoRepository;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;

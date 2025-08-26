@@ -4,5 +4,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CotacaoRepository extends MongoRepository<Cotacao, String> {
+public interface SpringCotacaoRepository extends MongoRepository<Cotacao, String> {
 }
