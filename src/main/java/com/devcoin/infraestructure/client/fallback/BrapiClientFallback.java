@@ -6,8 +6,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BrapiClientFallback implements BrapiClient {
+
     @Override
     public BrapiResponse getQuote(String stockId) {
-        return new BrapiResponse(null);
+        throw new RuntimeException("Brapi service is unavailable");
     }
 }
