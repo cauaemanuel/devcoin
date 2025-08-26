@@ -1,5 +1,6 @@
 package com.devcoin.infraestructure.config;
 
+import com.devcoin.infraestructure.client.BrapiClient;
 import com.devcoin.infraestructure.persistence.Cotacao;
 import com.devcoin.infraestructure.persistence.CotacaoRepository;
 import jakarta.annotation.PostConstruct;
@@ -12,6 +13,9 @@ public class RuntimeTest {
     @Autowired
     private CotacaoRepository cotacaoRepository;
 
+    @Autowired
+    private BrapiClient brapiClient;
+
     @PostConstruct
     public void insert(){
         var cotacao = new Cotacao();
@@ -19,6 +23,9 @@ public class RuntimeTest {
         cotacao.setSymbol("PTR4");
         cotacao.setMarketCap("R$ 500B");
         cotacao.setPrice(28.50);
-        cotacaoRepository.save(cotacao);
+
+        System.out.println(brapiClient.getQuote("2hbAgiGgLRSHCLuohYBnTf", "BTC"));
+
+
     }
 }
