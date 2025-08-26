@@ -1,0 +1,11 @@
+spring:
+  application:
+       name: devcoin
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: devcoin
+      username: root
+      password: root
+      authentication-database: admin
