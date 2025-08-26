@@ -1,11 +1,11 @@
 package com.devcoin.infraestructure.client.fallback;
 
 import com.devcoin.application.dto.BrapiResponse;
-import com.devcoin.infraestructure.client.BrapiClient;
+import com.devcoin.infraestructure.client.SpringBrapiClient;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BrapiClientFallback implements BrapiClient {
+public class SpringBrapiClientFallback implements SpringBrapiClient {
 
     @Override
     public BrapiResponse getQuote(String stockId) {

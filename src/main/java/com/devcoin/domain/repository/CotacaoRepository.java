@@ -1,4 +1,4 @@
 package com.devcoin.domain.repository;
 
-public class MongoRepository {
+public interface CotacaoRepository {
 }
