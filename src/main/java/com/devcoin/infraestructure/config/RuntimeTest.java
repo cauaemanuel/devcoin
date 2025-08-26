@@ -23,9 +23,6 @@ public class RuntimeTest {
         cotacao.setSymbol("PTR4");
         cotacao.setMarketCap("R$ 500B");
         cotacao.setPrice(28.50);
-
         System.out.println(brapiClient.getQuote( "BTC"));
-
-
     }
 }
