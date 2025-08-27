@@ -21,4 +21,9 @@ public class CotacaoRepositoryImplements implements CotacaoRepository {
     public Iterable<Cotacao> findAll() {
         return springCotacaoRepository.findAll();
     }
+
+    @Override
+    public Cotacao findBySymbol(String symbol) {
+        return springCotacaoRepository.findBySymbol(symbol);
+    }
 }

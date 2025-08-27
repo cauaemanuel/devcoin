@@ -7,4 +7,6 @@ public interface CotacaoRepository {
     Cotacao save(Cotacao cotacao);
 
     Iterable<Cotacao> findAll();
+
+    Cotacao findBySymbol(String symbol);
 }

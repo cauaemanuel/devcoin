@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableFeignClients
 @EnableAsync
 @EnableScheduling
+@EnableCaching
 public class DevcoinApplication {
 
 	public static void main(String[] args) {
