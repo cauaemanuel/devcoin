@@ -1,11 +1,8 @@
 package com.devcoin.application.usecases;
 
-// src/main/java/com/devcoin/service/TestService.java
-
 import com.devcoin.domain.client.BrapiClient;
 import com.devcoin.domain.repository.CotacaoRepository;
 import com.devcoin.infraestructure.persistence.Cotacao;
-import com.devcoin.infraestructure.persistence.SpringCotacaoRepository;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -25,6 +22,11 @@ public class SaveStockUseCase {
     public void salvarAsync(Cotacao cotacao) {
         try {
             Thread.sleep(4000);
+            var cotacaoExistente = cotacaoRepository.findBySymbol(cotacao.getSymbol());
+            if (cotacaoExistente != null) {
+                System.out.println("Cotação já existe para o símbolo: " + cotacao.getSymbol());
+                return;
+            }
             cotacaoRepository.save(cotacao);
             System.out.println("Pausa finalizada na thread: " + Thread.currentThread().getName());
         } catch (InterruptedException e) {
@@ -32,8 +34,8 @@ public class SaveStockUseCase {
         }
     }
 
-    @Scheduled(cron = "*/1 * * * *")
-    @Async
+
+    @Scheduled(fixedRate = 60000)
     public void atualizarStock(){
         var moedas = cotacaoRepository.findAll();
         moedas.forEach(moeda -> {
@@ -42,6 +44,5 @@ public class SaveStockUseCase {
             moeda.setPrice(novaCotacao.getPrice());
             cotacaoRepository.save(moeda);
         });
-
     }
 }
