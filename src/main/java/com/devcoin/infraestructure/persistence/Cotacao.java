@@ -5,6 +5,10 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
+import java.util.Date;
+
+
 @Data
 @Document(collection = "cotacoes")
 public class Cotacao {
@@ -17,6 +21,7 @@ public class Cotacao {
     private String name;
     private String marketCap;
     private Double price;
+    private Instant requestedAt;
 
     public Cotacao(BrapiResponse response) {
         var brapiResponse = response.results().get(0);
@@ -24,6 +29,7 @@ public class Cotacao {
         this.name = brapiResponse.longName();
         this.marketCap = brapiResponse.marketCap();
         this.price = brapiResponse.regularMarketPrice();
+        this.requestedAt = response.requestedAt();
     }
 
     public Cotacao() {

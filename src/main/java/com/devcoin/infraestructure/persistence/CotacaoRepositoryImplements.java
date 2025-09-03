@@ -3,6 +3,10 @@ package com.devcoin.infraestructure.persistence;
 import com.devcoin.domain.repository.CotacaoRepository;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
+import java.util.Date;
+import java.util.List;
+
 @Component
 public class CotacaoRepositoryImplements implements CotacaoRepository {
 
@@ -25,5 +29,10 @@ public class CotacaoRepositoryImplements implements CotacaoRepository {
     @Override
     public Cotacao findBySymbol(String symbol) {
         return springCotacaoRepository.findBySymbol(symbol);
+    }
+
+    @Override
+    public List<Cotacao> findByRequestAtBefore(Instant limite) {
+        return springCotacaoRepository.findByRequestAtBefore(limite);
     }
 }
